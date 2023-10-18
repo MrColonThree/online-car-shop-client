@@ -1,5 +1,5 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { BsEyeSlashFill, BsEyeFill, BsGithub, BsGoogle } from "react-icons/bs";
+import { BsEyeSlashFill, BsEyeFill,BsGoogle } from "react-icons/bs";
 import { useContext, useEffect, useState } from "react";
 
 import Swal from "sweetalert2";

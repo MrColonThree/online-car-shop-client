@@ -186,7 +186,7 @@ const CustomizeNavbar = () => {
     </ul>
   );
   return (
-    <Navbar className="sticky z-10 h-max max-w-full rounded-none py-4 px-4 bg-black">
+    <Navbar className="sticky z-10 h-max max-w-full rounded-none py-4 px-4 bg-black border-black">
       <div className="relative flex items-center justify-between">
         <IconButton
           variant="text"

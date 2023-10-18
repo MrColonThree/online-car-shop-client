@@ -1,6 +1,12 @@
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-const AddProduct = () => {
-  const handleAddProduct = (e) => {
+
+const Update = () => {
+  const product = useLoaderData();
+  const { _id, name, brand, image, type, rating, price, details } = product;
+  console.log(product);
+  const navigate = useNavigate();
+  const handleUpdateProduct = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -10,39 +16,40 @@ const AddProduct = () => {
     const details = form.details.value;
     const rating = form.rating.value;
     const image = form.image.value;
-    const newProduct = { name, brand, type, price, image, details, rating };
-    console.log(newProduct);
+    const updateProduct = { name, brand, type, price, image, details, rating };
+    console.log(updateProduct);
     // send data to the server
-    fetch("http://localhost:7000/addProduct", {
-      method: "POST",
+    fetch(`http://localhost:7000/products/${_id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newProduct),
+      body: JSON.stringify(updateProduct),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
-          location.reload();
+        if (data.modifiedCount > 0) {
+        
           Swal.fire({
             title: "Success",
-            text: "Product added successfully",
+            text: "Product updated successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });
+          window.location.href = "/";
+          
         }
       });
   };
   return (
     <div className="max-w-screen-xl mx-auto px-5 md:px-10 py-5 md:py-16">
       <div className="bg-red-50 px-10 py-10 md:px-20 md:py-10">
-        <h2 className="text-3xl text-center font-bold mb-5">Add a Product</h2>
+        <h2 className="text-3xl text-center font-bold mb-5">Update Product</h2>
         <p className="text-center  mx-auto mb-5">
-          Rev up your listing! Sell your car with ease by adding its details in
-          our user-friendly form.
+          You can update or customize the product here by filling the form
         </p>
-        <form onSubmit={handleAddProduct}>
+        <form onSubmit={handleUpdateProduct}>
           <div className="grid gap-6 mb-6 md:grid-cols-2">
             <div>
               <label className="block mb-2 text-lg font-semibold text-gray-900 ">
@@ -51,6 +58,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="name"
+                defaultValue={name}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Enter product name"
                 required
@@ -63,6 +71,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="brand"
+                defaultValue={brand}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Enter  brand name"
                 required
@@ -75,6 +84,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="type"
+                defaultValue={type}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Enter product type"
                 required
@@ -87,6 +97,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="price"
+                defaultValue={price}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Enter product price"
                 required
@@ -99,6 +110,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="rating"
+                defaultValue={rating}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Enter product rating"
                 required
@@ -111,6 +123,7 @@ const AddProduct = () => {
               <input
                 type="text"
                 name="details"
+                defaultValue={details}
                 className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 placeholder="Enter product details"
               />
@@ -123,6 +136,7 @@ const AddProduct = () => {
             <input
               type="url"
               name="image"
+              defaultValue={image}
               className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
               placeholder="Enter product image url"
               required
@@ -141,4 +155,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default Update;
