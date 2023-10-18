@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Providers/AuthProvider";
 const AddProduct = () => {
+  const { dark } = useContext(AuthContext);
   const handleAddProduct = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -24,30 +27,37 @@ const AddProduct = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          location.reload();
           Swal.fire({
             title: "Success",
             text: "Product added successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "Okay",
           });
         }
       });
   };
   return (
     <div className="max-w-screen-xl mx-auto px-5 md:px-10 py-5 md:py-16">
-      <div className="bg-red-50 px-10 py-10 md:px-20 md:py-10">
-        <h2 className="text-3xl text-center font-bold mb-5">Add a Product</h2>
+      <div
+        className={`px-10 py-10 md:px-20 md:py-10 filter backdrop-blur-xl ${
+          dark ? "text-red-400 bg-yellow-300" : "bg-red-200"
+        }`}
+      >
+        <h2
+          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)" }}
+          className="text-3xl text-center font-bold mb-5"
+        >
+          Add a Product
+        </h2>
         <p className="text-center  mx-auto mb-5">
           Rev up your listing! Sell your car with ease by adding its details in
           our user-friendly form.
         </p>
+
         <form onSubmit={handleAddProduct}>
           <div className="grid gap-6 mb-6 md:grid-cols-2">
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
-                Name
-              </label>
+              <label className="block mb-2 text-lg font-semibold ">Name</label>
               <input
                 type="text"
                 name="name"
@@ -57,7 +67,7 @@ const AddProduct = () => {
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+              <label className="block mb-2 text-lg font-semibold">
                 Brand Name
               </label>
               <input
@@ -69,9 +79,7 @@ const AddProduct = () => {
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
-                Type
-              </label>
+              <label className="block mb-2 text-lg font-semibold ">Type</label>
               <input
                 type="text"
                 name="type"
@@ -81,9 +89,7 @@ const AddProduct = () => {
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
-                Price
-              </label>
+              <label className="block mb-2 text-lg font-semibold ">Price</label>
               <input
                 type="text"
                 name="price"
@@ -93,7 +99,7 @@ const AddProduct = () => {
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+              <label className="block mb-2 text-lg font-semibold ">
                 Rating
               </label>
               <input
@@ -105,7 +111,7 @@ const AddProduct = () => {
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+              <label className="block mb-2 text-lg font-semibold ">
                 Short Details
               </label>
               <input
@@ -117,9 +123,7 @@ const AddProduct = () => {
             </div>
           </div>
           <div className="mb-6">
-            <label className="block mb-2 text-lg font-semibold text-gray-900 ">
-              Image
-            </label>
+            <label className="block mb-2 text-lg font-semibold ">Image</label>
             <input
               type="url"
               name="image"

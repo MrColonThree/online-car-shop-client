@@ -12,9 +12,10 @@ export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [brands, setBrands] = useState([]);
+  const [brands, setBrands] = useState(null);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [dark, setTheme] = useState(null);
   useEffect(() => {
     fetch("http://localhost:7000/brands")
       .then((res) => res.json())
@@ -60,6 +61,8 @@ const AuthProvider = ({ children }) => {
     user,
     setUser,
     logOut,
+    dark,
+    setTheme,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

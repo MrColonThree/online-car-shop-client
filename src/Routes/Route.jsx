@@ -8,6 +8,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import BrandPage from "../Pages/BrandPage/BrandPage";
 import Update from "../Pages/Update/Update";
 import ProductDetails from "../Components/Products/ProductDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const Route = createBrowserRouter([
   {
@@ -20,11 +21,20 @@ const Route = createBrowserRouter([
       },
       {
         path: "/addProduct",
-        element: <AddProduct />,
+        element: (
+          <PrivateRoute>
+            <AddProduct />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/cart",
-        element: <MyCart />,
+        element: (
+          <PrivateRoute>
+            <MyCart></MyCart>
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:7000/cart"),
       },
       {
         path: "/login",

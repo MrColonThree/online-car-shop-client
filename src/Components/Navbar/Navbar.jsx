@@ -28,6 +28,8 @@ import {
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { BsFillSunFill } from "react-icons/bs";
+import { MdDarkMode } from "react-icons/md";
 function ProfileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
@@ -118,7 +120,8 @@ function ProfileMenu() {
 
 const CustomizeNavbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, dark, setTheme } = useContext(AuthContext);
+
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -183,10 +186,22 @@ const CustomizeNavbar = () => {
           </button>
         </NavLink>
       </li>
+      <li>
+        <button
+          className="text-xl block py-1 lg:py-2 pl-3 pr-4 md:bg-transparent text-white hover:text-gray-400 md:p-0"
+          onClick={() => setTheme(!dark)}
+        >
+          {dark ? <BsFillSunFill></BsFillSunFill> : <MdDarkMode></MdDarkMode>}
+        </button>
+      </li>
     </ul>
   );
   return (
-    <Navbar className="sticky z-10 h-max max-w-full rounded-none py-4 px-4 bg-black border-black">
+    <Navbar
+      className={`sticky z-10 h-max max-w-full rounded-none py-4 px-4 bg-black border-black ${
+        dark ? "border-b-white" : ""
+      }`}
+    >
       <div className="relative flex items-center justify-between">
         <IconButton
           variant="text"
