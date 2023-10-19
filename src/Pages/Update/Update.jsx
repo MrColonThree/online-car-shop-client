@@ -30,15 +30,13 @@ const Update = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-        
           Swal.fire({
             title: "Success",
             text: "Product updated successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });
-          window.location.href = "/";
-          
+          navigate("/");
         }
       });
   };
@@ -145,7 +143,7 @@ const Update = () => {
           <div className="text-center">
             <input
               type="submit"
-              value="Add"
+              value="Update"
               className="text-white bg-red-500 hover:bg-red-700  focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg px-5 py-2.5 text-center text-xl w-full"
             />
           </div>

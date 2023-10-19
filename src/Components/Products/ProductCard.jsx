@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import Ratings from "../Ratings/Ratings";
 
 const ProductCard = ({ product }) => {
-  const {_id, name, brand, image, type, rating, price, details } = product;
+  const { _id, name, brand, image, type, rating, price, details } = product;
   const [showDetails, setShowDetails] = useState(details.slice(0, 100));
   const handleSeeMore = () => {
     setShowDetails(details);
@@ -25,9 +26,7 @@ const ProductCard = ({ product }) => {
       <div className="flex justify-between items-center gap-5 mt-2">
         <p>Brand: {brand}</p>
 
-        <p className="flex items-center">
-          <AiFillStar className="text-amber-600 text-xl"></AiFillStar> {rating}
-        </p>
+        <p className="flex items-center">{rating}</p>
       </div>
       <div className="flex-grow">
         <p className="text-sm mt-2">

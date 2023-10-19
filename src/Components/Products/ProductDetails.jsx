@@ -5,7 +5,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const ProductDetails = () => {
-  const { dark } = useContext(AuthContext);
+  const { theme } = useContext(AuthContext);
   const product = useLoaderData();
   const { name, brand, image, type, rating, price, details } = product;
   console.log(product);
@@ -40,13 +40,13 @@ const ProductDetails = () => {
           />
         </div>
         <div
-          className={`border ${dark ? "" : "bg-red-100"} p-5 lg:w-1/2 flex-col`}
+          className={`border p-5 lg:w-1/2 flex-col`}
         >
           <h1 className="text-4xl font-bold my-3 uppercase">
             {name} <span className="font-semibold">({brand})</span>
           </h1>
           <p className="flex items-center">
-            {type} <AiFillStar className="text-amber-600 text-xl"></AiFillStar>{" "}
+            {type} <AiFillStar className="text-amber-600 text-xl ml-2"></AiFillStar>
             {rating}
           </p>
           <p className="text-xl">

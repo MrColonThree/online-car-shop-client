@@ -1,9 +1,10 @@
 import Brands from "../../Components/Brands/Brands";
+import Header from "../../Components/Header/Header";
 
 const Home = () => {
   return (
     <div>
-      <h2>This is home</h2>
+      <Header/>
       <Brands />
     </div>
   );

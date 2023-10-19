@@ -6,9 +6,7 @@ import {
   A11y,
   Autoplay,
 } from "swiper/modules";
-
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
@@ -18,10 +16,9 @@ import { useLoaderData } from "react-router-dom";
 
 const BrandBanner = () => {
   const brand = useLoaderData();
-  console.log(brand);
   const banner = brand.brand_banner;
   return (
-    <div>
+    <div className="max-w-screen-2xl mx-auto">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
         autoplay={{

@@ -44,7 +44,7 @@ const MyCart = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              const remaining = cartProducts.filter((user) => user._id !== id);
+              const remaining = cartProducts.filter((product) => product._id !== id);
               setCartProducts(remaining);
               Swal.fire("Removed!", "Product has been removed.", "success");
             }

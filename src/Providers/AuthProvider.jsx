@@ -14,7 +14,23 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [dark, setTheme] = useState(null);
+  const [dark, setTheme] = useState(false);
+  // to get theme from local storage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme === "dark");
+    }
+  }, []);
+
+  // toggle changed theme and save the theme in local storage
+  const toggleTheme = () => {
+    setTheme((prevDark) => {
+      const newTheme = !prevDark ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      return !prevDark;
+    });
+  };
   useEffect(() => {
     fetch("http://localhost:7000/brands")
       .then((res) => res.json())
@@ -55,7 +71,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     logOut,
     dark,
-    setTheme,
+    toggleTheme,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

@@ -120,7 +120,7 @@ function ProfileMenu() {
 
 const CustomizeNavbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { user, dark, setTheme } = useContext(AuthContext);
+  const { user, dark,toggleTheme } = useContext(AuthContext);
 
   useEffect(() => {
     window.addEventListener(
@@ -189,7 +189,7 @@ const CustomizeNavbar = () => {
       <li>
         <button
           className="text-xl block py-1 lg:py-2 pl-3 pr-4 md:bg-transparent text-white hover:text-gray-400 md:p-0"
-          onClick={() => setTheme(!dark)}
+          onClick={toggleTheme}
         >
           {dark ? <BsFillSunFill></BsFillSunFill> : <MdDarkMode></MdDarkMode>}
         </button>

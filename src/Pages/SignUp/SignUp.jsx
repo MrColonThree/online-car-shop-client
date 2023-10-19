@@ -108,7 +108,7 @@ const Register = () => {
           <input
             type="text"
             name="name"
-            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-200 dark:border-gray-600 dark:placeholder-gray-700 dark:text-black dark:focus:ring-red-500 dark:focus:border-red-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 theme:bg-gray-200 theme:border-gray-600 theme:placeholder-gray-700 theme:text-black theme:focus:ring-red-500 theme:focus:border-red-500"
             placeholder="your name"
             required
           />
@@ -118,7 +118,7 @@ const Register = () => {
           <input
             type="text"
             name="photo"
-            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-200 dark:border-gray-600 dark:placeholder-gray-700 dark:text-black dark:focus:ring-red-500 dark:focus:border-red-500"
+            className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 theme:bg-gray-200 theme:border-gray-600 theme:placeholder-gray-700 theme:text-black theme:focus:ring-red-500 theme:focus:border-red-500"
             placeholder="your photo url"
           />
         </div>

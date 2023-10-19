@@ -1,5 +1,5 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { BsEyeSlashFill, BsEyeFill,BsGoogle } from "react-icons/bs";
+import { BsEyeSlashFill, BsEyeFill, BsGoogle } from "react-icons/bs";
 import { useContext, useEffect, useState } from "react";
 
 import Swal from "sweetalert2";
@@ -8,8 +8,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const authInfo = useContext(AuthContext);
-  const { signInUser, googleSignIn } = authInfo;
+  const { signInUser, googleSignIn } = useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   useEffect(() => {
