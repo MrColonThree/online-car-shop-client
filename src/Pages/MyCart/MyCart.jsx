@@ -4,7 +4,6 @@ import { MdDeleteForever } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import Swal from "sweetalert2";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
-import { data } from "autoprefixer";
 const MyCart = () => {
   const loadedCartProducts = useLoaderData();
   const [cartProducts, setCartProducts] = useState(loadedCartProducts);

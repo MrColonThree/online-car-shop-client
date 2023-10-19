@@ -4,6 +4,7 @@ import BrandCard from "./BrandCard";
 
 const Brands = () => {
   const { brands } = useContext(AuthContext);
+  console.log(brands);
   return (
     <div className="max-w-screen-xl mx-auto px-5 my-20">
       <h2>{brands.length}</h2>

@@ -1,4 +1,4 @@
-import { BrandBanner } from "../../Components/BrandBanner/BrandBanner";
+import BrandBanner from "../../Components/BrandBanner/BrandBanner";
 import Products from "../../Components/Products/Products";
 
 const BrandPage = () => {

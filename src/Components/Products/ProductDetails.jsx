@@ -7,9 +7,9 @@ import Swal from "sweetalert2";
 const ProductDetails = () => {
   const { dark } = useContext(AuthContext);
   const product = useLoaderData();
-  const { _id, name, brand, image, type, rating, price, details } = product;
+  const { name, brand, image, type, rating, price, details } = product;
   console.log(product);
-  const handleAddToCart = (id) => {
+  const handleAddToCart = () => {
     fetch("http://localhost:7000/cart", {
       method: "POST",
       headers: {
@@ -55,7 +55,7 @@ const ProductDetails = () => {
           <hr className="my-2 border" />
           <p className="">{details}</p>
           <button
-            onClick={() => handleAddToCart(_id)}
+            onClick={handleAddToCart}
             className="text-lg font-semibold text-white bg-red-500 px-4 py-1 mt-3"
           >
             Add to cart
