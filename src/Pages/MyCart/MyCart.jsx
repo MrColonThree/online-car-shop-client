@@ -5,7 +5,7 @@ import { Tooltip } from "react-tooltip";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 const MyCart = () => {
-  const { user } = useContext(AuthContext);
+  const { user, dark } = useContext(AuthContext);
   const loadedCartProducts = useLoaderData();
   const [cartProducts, setCartProducts] = useState(loadedCartProducts);
   // to get userId of logged in user
@@ -66,14 +66,12 @@ const MyCart = () => {
       }
     });
   };
-  console.log(filteredProducts);
-  console.log(filteredProducts.map((p) => p._id));
   return (
     <div className="max-w-screen-xl mx-auto px-5">
       <div className="text-center my-10">
         <button
           style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)" }}
-          className="text-4xl font-bold p-1 border-b-2"
+          className="text-4xl font-bold p-1 border-b-2 uppercase"
           disabled
         >
           My Cart
@@ -85,7 +83,7 @@ const MyCart = () => {
       {cartProducts.length > 0 && (
         <div className="">
           <table className="w-full text-sm text-left ">
-            <thead className="uppercase  text-center border">
+            <thead className={`uppercase  text-center border-2 ${dark ? "border-white": "border-black"}`}>
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Serial
@@ -106,11 +104,11 @@ const MyCart = () => {
             </thead>
             <tbody>
               {filteredProducts.map((product, idx) => (
-                <tr key={idx} className=" border-b border-x text-center">
+                <tr key={idx} className={` border-b border-x-2 text-center ${dark ? "border-white": "border-black"}`}>
                   <td className="px-6 py-4">{idx + 1}</td>
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium whitespace-nowrap"
+                    className="px-6 py-4 font-semibold whitespace-nowrap"
                   >
                     {product.product.name}
                   </th>
@@ -119,7 +117,7 @@ const MyCart = () => {
                   <td className="px-6 py-4 flex items-center justify-center gap-2">
                     <button
                       onClick={() => handleDeleteProduct(product._id)}
-                      className="font-medium text-red-600 text-2xl hover:underline"
+                      className="text-red-600 text-2xl hover:underline"
                       data-tooltip-id="my-tooltip"
                       data-tooltip-content="Remove product"
                     >
@@ -132,6 +130,9 @@ const MyCart = () => {
           </table>
           <div className="my-10 text-right mr-5 font-semibold">
             <p>Total Price: ${formatNumberWithCommas(totalPrice)}</p>
+            <button className="text-xl text-white font-bold px-4 py-1 rounded bg-green-500 my-5 uppe">
+              Purchase
+            </button>
           </div>
           <Tooltip id="my-tooltip"></Tooltip>
         </div>

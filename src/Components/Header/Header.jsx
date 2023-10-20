@@ -46,7 +46,7 @@ const Header = () => {
                 dark ? "bg-black/50" : "bg-white/50"
               } px-5 py-5 rounded`}
             >
-              <h1 className="text-4xl lg:text-6xl font-bold mb-4 title-font uppercase">
+              <h1 className="text-4xl lg:text-6xl font-bold mb-4 uppercase">
                 {banner.title}
               </h1>
               <p className="text-lg lg:text-2xl">

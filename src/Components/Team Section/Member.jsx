@@ -16,7 +16,7 @@ const Member = ({member}) => {
         />
       </CardHeader>
       <CardBody className="text-center mb-2 flex-grow">
-        <h1 color="blue-gray" className="md:mb-2 mb-1 text-sm md:text-lg">
+        <h1 color="blue-gray" className="md:mb-2 mb-1 text-sm md:text-lg font-semibold">
          {name}
         </h1>
         <h3 color="blue-gray" className="md:mb-2 mb-1 text-sm md:text-lg">
