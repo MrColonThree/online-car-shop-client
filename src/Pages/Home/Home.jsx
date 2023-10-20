@@ -1,4 +1,5 @@
 import Brands from "../../Components/Brands/Brands";
+import ContactSection from "../../Components/Contact/ContactSection";
 import Header from "../../Components/Header/Header";
 import Team from "../../Components/Team Section/Team";
 const Home = () => {
@@ -6,7 +7,8 @@ const Home = () => {
     <div>
       <Header />
       <Brands />
-      <Team/>
+      <Team />
+      <ContactSection />
     </div>
   );
 };
