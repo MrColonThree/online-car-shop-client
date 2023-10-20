@@ -50,7 +50,7 @@ const MyCart = () => {
       confirmButtonText: "Yes, Remove Product from Cart!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:7000/cart/${id}`, {
+        fetch(`https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/cart/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -65,6 +65,15 @@ const MyCart = () => {
           });
       }
     });
+  };
+  const handlePurchase = (names) => {
+    Swal.fire(
+      "Congrats",
+      `You have successfully purchased ${names.map((name) =>
+        name.split(", ").join(", & ")
+      )} at the price of $${formatNumberWithCommas(totalPrice)}.`,
+      "success"
+    );
   };
   return (
     <div className="max-w-screen-xl mx-auto px-5">
@@ -83,7 +92,11 @@ const MyCart = () => {
       {cartProducts.length > 0 && (
         <div className="">
           <table className="w-full text-sm text-left ">
-            <thead className={`uppercase  text-center border-2 ${dark ? "border-white": "border-black"}`}>
+            <thead
+              className={`uppercase  text-center border-2 ${
+                dark ? "border-white" : "border-black"
+              }`}
+            >
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Serial
@@ -103,8 +116,17 @@ const MyCart = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredProducts.map((product, idx) => (
-                <tr key={idx} className={` border-b border-x-2 text-center ${dark ? "border-white": "border-black"}`}>
+              {filteredProducts && filteredProducts.map((product, idx) => (
+                <tr
+                  key={idx}
+                  className={`border-x-2 text-center ${
+                    dark ? "border-white" : "border-black"
+                  } ${
+                    idx + 1 === filteredProducts.length
+                      ? "border-b-2"
+                      : "border-b"
+                  }`}
+                >
                   <td className="px-6 py-4">{idx + 1}</td>
                   <th
                     scope="row"
@@ -130,7 +152,14 @@ const MyCart = () => {
           </table>
           <div className="my-10 text-right mr-5 font-semibold">
             <p>Total Price: ${formatNumberWithCommas(totalPrice)}</p>
-            <button className="text-xl text-white font-bold px-4 py-1 rounded bg-green-500 my-5 uppe">
+            <button
+              onClick={() =>
+                handlePurchase(
+                  filteredProducts.map((product) => product.product.name)
+                )
+              }
+              className="text-xl text-white font-bold px-4 py-1 rounded bg-green-500 my-5 uppe"
+            >
               Purchase
             </button>
           </div>

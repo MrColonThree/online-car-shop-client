@@ -1,16 +1,19 @@
 import { BsCaretLeftFill, BsCartPlus } from "react-icons/bs";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import Ratings from "../Ratings/Ratings";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Rating from "react-rating";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const ProductDetails = () => {
   const product = useLoaderData();
   const navigate = useNavigate();
   const { dark, user } = useContext(AuthContext);
   const { name, brand, image, type, rating, price, details } = product;
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleAddToCart = () => {
     // to get the user Id from firebase
     const userUID = user.uid;
@@ -23,14 +26,16 @@ const ProductDetails = () => {
         price,
       },
     };
-    console.log(productWithUserId);
-    fetch("http://localhost:7000/cart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(productWithUserId),
-    })
+    fetch(
+      "https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/cart",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(productWithUserId),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -63,9 +68,14 @@ const ProductDetails = () => {
             {name} <span className="font-semibold">({brand})</span>
           </h1>
           <p className="text-lg">{type}</p>
-          <div className="flex items-center text-lg">
-            <Ratings />
-            {rating}
+          <div className="flex items-center">
+            <Rating
+              initialRating={rating}
+              emptySymbol={<AiOutlineStar className="text-xl text-amber-700" />}
+              fullSymbol={<AiFillStar className="text-xl text-amber-700" />}
+              readonly
+            ></Rating>
+            <p className="text-xl">{rating}</p>
           </div>
           <p className="text-xl">
             Price: <span className="font-semibold">${price}</span>

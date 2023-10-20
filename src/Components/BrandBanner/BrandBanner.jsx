@@ -15,7 +15,7 @@ import { useLoaderData } from "react-router-dom";
 
 const BrandBanner = () => {
   const brand = useLoaderData();
-  const banner = brand.brand_banner;
+  const banner = brand.brand_banner || "";
   return (
     <div className="max-w-screen-2xl mx-auto">
       <Swiper
@@ -27,7 +27,7 @@ const BrandBanner = () => {
         }}
         slidesPerView={1}
       >
-        {banner.map((img, idx) => (
+        {banner && banner.map((img, idx) => (
           <SwiperSlide key={idx}>
             <img className="w-full mx-auto lg:h-[750px]" src={img} alt="" />
           </SwiperSlide>

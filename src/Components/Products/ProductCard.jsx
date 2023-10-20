@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Ratings from "../Ratings/Ratings";
+import Rating from "react-rating";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const ProductCard = ({ product }) => {
   const { _id, name, brand, image, type, rating, price, details } = product;
@@ -26,8 +27,13 @@ const ProductCard = ({ product }) => {
         <p>Brand: {brand}</p>
 
         <div className="flex items-center">
-          <Ratings/>
-          {rating}
+          <Rating
+            initialRating={rating}
+            emptySymbol={<AiOutlineStar className="text-xl text-amber-700" />}
+            fullSymbol={<AiFillStar className="text-xl text-amber-700" />}
+            readonly
+          ></Rating>
+          <p className="text-xl">{rating}</p>
         </div>
       </div>
       <div className="flex-grow">

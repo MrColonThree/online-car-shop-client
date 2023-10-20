@@ -17,9 +17,8 @@ const Update = () => {
     const rating = form.rating.value;
     const image = form.image.value;
     const updateProduct = { name, brand, type, price, image, details, rating };
-    console.log(updateProduct);
     // send data to the server
-    fetch(`http://localhost:7000/products/${_id}`, {
+    fetch(`https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/products/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +33,7 @@ const Update = () => {
             title: "Success",
             text: "Product updated successfully",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "Okay",
           });
           navigate(-1);
         }

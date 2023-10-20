@@ -1,8 +1,5 @@
-import { useContext } from "react";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../Providers/AuthProvider";
 const AddProduct = () => {
-  const { dark } = useContext(AuthContext);
   const handleAddProduct = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,13 +13,16 @@ const AddProduct = () => {
     const newProduct = { name, brand, type, price, image, details, rating };
     console.log(newProduct);
     // send data to the server
-    fetch("http://localhost:7000/addProduct", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    })
+    fetch(
+      "https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/addProduct",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newProduct),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -33,6 +33,7 @@ const AddProduct = () => {
             icon: "success",
             confirmButtonText: "Okay",
           });
+          form.reset();
         }
       });
   };
@@ -110,7 +111,7 @@ const AddProduct = () => {
             </div>
             <div>
               <label className="block mb-2 text-lg font-semibold ">
-              Short description
+                Short description
               </label>
               <input
                 type="text"

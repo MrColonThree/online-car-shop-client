@@ -7,7 +7,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:7000/products")
+    fetch("https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
@@ -25,18 +25,18 @@ const Products = () => {
       </h2>
       {currentProducts.length === 0 ? (
         <div className="text-center py-32">
-          <h1 className="text-3xl mb-5">Sorry!</h1>{" "}
-          <p className="text-xl">We are out of stock</p>
+          <h1 className="text-4xl mb-5">Sorry!</h1>{" "}
+          <p className="text-2xl">We are out of stock</p>
           <button
             onClick={handleGoBack}
-            className="text-lg font-semibold text-white bg-red-500 px-4 py-1 mt-3 rounded"
+            className="text-lg font-semibold text-white bg-red-500 px-4 py-1 mt-5 rounded"
           >
             Go Back
           </button>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {currentProducts.map((product) => (
+          {currentProducts && currentProducts.map((product) => (
             <ProductCard key={product._id} product={product}></ProductCard>
           ))}
         </div>

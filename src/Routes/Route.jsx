@@ -36,7 +36,7 @@ const Route = createBrowserRouter([
             <MyCart></MyCart>
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:7000/cart"),
+        loader: () => fetch("https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/cart"),
       },
       {
         path: "/login",
@@ -50,7 +50,7 @@ const Route = createBrowserRouter([
         path: "/brand/:name",
         element: <BrandPage />,
         loader: ({ params }) =>
-          fetch(`http://localhost:7000/brand/${params.name}`),
+          fetch(`https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/brand/${params.name}`),
       },
       {
         path: "/details/:id",
@@ -60,7 +60,7 @@ const Route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:7000/products/${params.id}`),
+          fetch(`https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/products/${params.id}`),
       },
       {
         path: "/update/:id",
@@ -70,7 +70,7 @@ const Route = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:7000/products/${params.id}`),
+          fetch(`https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/products/${params.id}`),
       },
     ],
   },

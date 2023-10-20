@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
   };
   // to get brands data
   useEffect(() => {
-    fetch("http://localhost:7000/brands")
+    fetch("https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/brands")
       .then((res) => res.json())
       .then((data) => setBrands(data));
   }, []);

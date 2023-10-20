@@ -11,7 +11,7 @@ const Team = () => {
   const [team, setTeam] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:7000/team")
+    fetch("https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/team")
       .then((res) => res.json())
       .then((data) => setTeam(data));
   }, []);
@@ -38,7 +38,7 @@ const Team = () => {
         }}
         className="mySwiper"
       >
-        {team.map((member) => (
+        {team && team.map((member) => (
           <SwiperSlide key={member._id}>
             <Member member={member}></Member>
           </SwiperSlide>
