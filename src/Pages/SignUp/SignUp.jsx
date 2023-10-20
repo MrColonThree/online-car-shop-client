@@ -6,7 +6,7 @@ import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 import { AiFillInfoCircle } from "react-icons/ai";
 
-const Register = () => {
+const SignUp = () => {
   const navigate = useNavigate();
   const authInfo = useContext(AuthContext);
   const { createUser, googleSignIn, setUser } = authInfo;
@@ -102,7 +102,7 @@ const Register = () => {
         className="w-3/4 md:w-4/6 lg:w-1/2 mx-20   border-2 rounded-2xl py-12 px-10 md:px-20 shadow-xl"
       >
         <img className="w-24 mx-auto" src="logo.png" alt="" />
-        <h1 className="text-center my-3 text-3xl font-bold">Automotive Oasis</h1>
+        <h1 className="text-center my-3 text-3xl font-bold uppercase">Automotive Oasis</h1>
         <div className="mb-3">
           <label className="block mb-2 font-medium ">Your name</label>
           <input
@@ -213,11 +213,11 @@ const Register = () => {
           type="submit"
           className="text-white  focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm w-full  px-5 py-2.5 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800"
         >
-          Register
+          Sign Up
         </button>
         <div className="flex text-center items-center justify-center gap-2 my-5">
           <hr className="w-full border" />
-          <h2 className="text-center w-80">Register with</h2>
+          <h2 className="text-center w-80">SignUp with</h2>
           <hr className="w-full border" />
         </div>
 
@@ -234,4 +234,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SignUp;

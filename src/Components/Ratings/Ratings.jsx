@@ -1,10 +1,6 @@
-
+import { Rating } from "@material-tailwind/react";
 const Ratings = () => {
-  return (
-    <div>
-      <h2>this is ratings</h2>
-    </div>
-  );
+  return <Rating value={4} readonly />;
 };
 
 export default Ratings;

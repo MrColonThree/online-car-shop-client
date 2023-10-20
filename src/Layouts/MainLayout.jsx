@@ -7,7 +7,7 @@ import Footer from "../Components/Footer/Footer";
 const MainLayout = () => {
   const { dark } = useContext(AuthContext);
   return (
-    <div className={`relative ${dark ? "black-mode" : ""}`}>
+    <div className={`relative exo ${dark ? "black-mode" : ""}`}>
       <CustomizeNavbar></CustomizeNavbar>
       <div className="min-h-[65vh]">
         <Outlet></Outlet>

@@ -112,7 +112,7 @@ const AddProduct = () => {
             </div>
             <div>
               <label className="block mb-2 text-lg font-semibold ">
-                Short Details
+              Short description
               </label>
               <input
                 type="text"

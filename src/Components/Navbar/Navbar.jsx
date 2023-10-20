@@ -217,7 +217,7 @@ const CustomizeNavbar = () => {
         </IconButton>
         <NavLink
           to="/"
-          className="mr-4 ml-2 my-2  text-2xl font-bold cursor-pointer text-white luna flex gap-2 items-center"
+          className="mr-4 ml-2 my-2  text-2xl font-bold cursor-pointer text-white flex gap-2 items-center uppercase"
         >
           <img className="h-8" src="/logo.png" alt="" />
           Automotive Oasis

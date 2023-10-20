@@ -69,7 +69,7 @@ const Login = () => {
         className="w-3/4 md:w-4/6 lg:w-1/2 mx-20 border-2 rounded-2xl py-12 px-10 md:px-20 shadow-xl"
       >
         <img className="w-24 mx-auto" src="logo.png" alt="" />
-        <h1 className="text-center my-3 text-3xl font-bold">
+        <h1 className="text-center my-3 text-3xl font-bold uppercase">
           Automotive Oasis
         </h1>
         {error && (

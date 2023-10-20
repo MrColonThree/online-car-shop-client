@@ -31,27 +31,33 @@ const AuthProvider = ({ children }) => {
       return !prevDark;
     });
   };
+  // to get brands data
   useEffect(() => {
     fetch("http://localhost:7000/brands")
       .then((res) => res.json())
       .then((data) => setBrands(data));
   }, []);
+  // to create user
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
+  // to sign in
   const signInUser = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+  // to sign in with google
   const googleSignIn = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
+  // to logout
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
+  // to observe the user is logged in or out
   useEffect(() => {
     const observer = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);

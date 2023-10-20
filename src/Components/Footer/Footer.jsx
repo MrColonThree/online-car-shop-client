@@ -16,7 +16,7 @@ const Footer = () => {
       >
         <div className="flex items-center gap-2">
           <img src="/logo.png" alt="logo-ct" className="w-16" />
-          <h3 className="text-2xl">Automotive Oasis</h3>
+          <h3 className="text-2xl uppercase">Automotive Oasis</h3>
           <button onClick={handleGoToTop} className="text-lg ml-5">
             <BsArrowUpSquare />
           </button>

@@ -36,7 +36,7 @@ const Update = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
-          navigate("/");
+          navigate(-1);
         }
       });
   };
@@ -116,7 +116,7 @@ const Update = () => {
             </div>
             <div>
               <label className="block mb-2 text-lg font-semibold text-gray-900 ">
-                Short Details
+              Short description
               </label>
               <input
                 type="text"

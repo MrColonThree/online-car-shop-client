@@ -1,32 +1,44 @@
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { Tooltip } from "react-tooltip";
 import Swal from "sweetalert2";
-import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
+import { AuthContext } from "../../Providers/AuthProvider";
 const MyCart = () => {
+  const { user } = useContext(AuthContext);
   const loadedCartProducts = useLoaderData();
   const [cartProducts, setCartProducts] = useState(loadedCartProducts);
-  const [quantity, setQuantity] = useState({});
-  const addMultiple = (id) => {
-    setQuantity((prevQuantity) => ({
-      ...prevQuantity,
-      [id]: (prevQuantity[id] || 0) + 1,
-    }));
-  };
+  // to get userId of logged in user
+  const userUID = user.uid;
+  const filteredProducts = cartProducts.filter(
+    (item) => item.user_id === userUID
+  );
+  // to replace the price value from string to number and calculate total price
+  const totalPrice = filteredProducts
+    .map((p) => p.product)
+    .reduce(
+      (acc, product) => acc + parseFloat(product.price.replace(/,/g, "")),
+      0
+    );
 
-  const decreaseProduct = (id) => {
-    setQuantity((prevQuantity) => {
-      const currentQuantity = prevQuantity[id] || 0;
-      if (currentQuantity > 0) {
-        return {
-          ...prevQuantity,
-          [id]: currentQuantity - 1,
-        };
+  // to format the total price with commas
+  function formatNumberWithCommas(price) {
+    const parts = price.toString().split(".");
+    const integerPart = parts[0];
+    const decimalPart = parts[1] || ""; //
+    let formattedInteger = "";
+    const length = integerPart.length;
+    for (let i = 0; i < length; i++) {
+      if (i > 0 && (length - i) % 3 === 0) {
+        formattedInteger += ",";
       }
-      return prevQuantity;
-    });
-  };
+      formattedInteger += integerPart[i];
+    }
+    const formattedNumber = decimalPart
+      ? formattedInteger + "." + decimalPart
+      : formattedInteger;
+    return formattedNumber;
+  }
   const handleDeleteProduct = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -44,7 +56,9 @@ const MyCart = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              const remaining = cartProducts.filter((product) => product._id !== id);
+              const remaining = filteredProducts.filter(
+                (product) => product._id !== id
+              );
               setCartProducts(remaining);
               Swal.fire("Removed!", "Product has been removed.", "success");
             }
@@ -52,6 +66,8 @@ const MyCart = () => {
       }
     });
   };
+  console.log(filteredProducts);
+  console.log(filteredProducts.map((p) => p._id));
   return (
     <div className="max-w-screen-xl mx-auto px-5">
       <div className="text-center my-10">
@@ -67,9 +83,9 @@ const MyCart = () => {
         <div className="text-center text-3xl my-40">Cart Is empty!</div>
       )}
       {cartProducts.length > 0 && (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <table className="w-full text-sm text-left text-gray-500 ">
-            <thead className=" text-gray-700 uppercase bg-gray-50 text-center">
+        <div className="">
+          <table className="w-full text-sm text-left ">
+            <thead className="uppercase  text-center border">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Serial
@@ -89,33 +105,18 @@ const MyCart = () => {
               </tr>
             </thead>
             <tbody>
-              {cartProducts.map((product, idx) => (
-                <tr key={idx} className="bg-white border-b text-center">
+              {filteredProducts.map((product, idx) => (
+                <tr key={idx} className=" border-b border-x text-center">
                   <td className="px-6 py-4">{idx + 1}</td>
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                    className="px-6 py-4 font-medium whitespace-nowrap"
                   >
-                    {product.name}
+                    {product.product.name}
                   </th>
-                  <td className="px-6 py-4">{product.brand}</td>
-                  <td className="px-6 py-4">${product.price}</td>
+                  <td className="px-6 py-4">{product.product.brand}</td>
+                  <td className="px-6 py-4">${product.product.price}</td>
                   <td className="px-6 py-4 flex items-center justify-center gap-2">
-                    <button
-                      onClick={() => addMultiple(product._id)}
-                      className="font-medium text-black hover:underline text-2xl"
-                    >
-                      <AiOutlinePlusSquare></AiOutlinePlusSquare>
-                    </button>
-                    <p className="font-semibold ">
-                      {quantity[product._id] || 1}
-                    </p>
-                    <button
-                      onClick={() => decreaseProduct(product._id)}
-                      className="font-medium hover:underline text-2xl text-black"
-                    >
-                      <AiOutlineMinusSquare></AiOutlineMinusSquare>
-                    </button>
                     <button
                       onClick={() => handleDeleteProduct(product._id)}
                       className="font-medium text-red-600 text-2xl hover:underline"
@@ -129,6 +130,9 @@ const MyCart = () => {
               ))}
             </tbody>
           </table>
+          <div className="my-10 text-right mr-5 font-semibold">
+            <p>Total Price: ${formatNumberWithCommas(totalPrice)}</p>
+          </div>
           <Tooltip id="my-tooltip"></Tooltip>
         </div>
       )}
