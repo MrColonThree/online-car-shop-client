@@ -42,100 +42,100 @@ const Update = () => {
   };
   return (
     <div className="max-w-screen-xl mx-auto px-5 md:px-10 py-5 md:py-16">
-      <div className="bg-red-50 px-10 py-10 md:px-20 md:py-10">
-        <h2 className="text-3xl text-center font-bold mb-5">Update Product</h2>
+      <div className="px-10 py-10 md:px-20 md:py-10 border-2 rounded">
+        <h2 style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)" }} className="text-3xl text-center font-bold mb-5 uppercase">Update Product</h2>
         <p className="text-center  mx-auto mb-5">
           You can update or customize the product here by filling the form
         </p>
         <form onSubmit={handleUpdateProduct}>
           <div className="grid gap-6 mb-6 md:grid-cols-2">
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+              <label className="block mb-2 text-lg font-semibold  ">
                 Name
               </label>
               <input
                 type="text"
                 name="name"
                 defaultValue={name}
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-gray-900"
                 placeholder="Enter product name"
                 required
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+              <label className="block mb-2 text-lg font-semibold  ">
                 Brand Name
               </label>
               <input
                 type="text"
                 name="brand"
                 defaultValue={brand}
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-gray-900"
                 placeholder="Enter  brand name"
                 required
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+              <label className="block mb-2 text-lg font-semibold  ">
                 Type
               </label>
               <input
                 type="text"
                 name="type"
                 defaultValue={type}
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-gray-900"
                 placeholder="Enter product type"
                 required
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+              <label className="block mb-2 text-lg font-semibold  ">
                 Price
               </label>
               <input
                 type="text"
                 name="price"
                 defaultValue={price}
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-gray-900"
                 placeholder="Enter product price"
                 required
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+              <label className="block mb-2 text-lg font-semibold  ">
                 Rating
               </label>
               <input
                 type="text"
                 name="rating"
                 defaultValue={rating}
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-gray-900"
                 placeholder="Enter product rating"
                 required
               />
             </div>
             <div>
-              <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+              <label className="block mb-2 text-lg font-semibold  ">
               Short description
               </label>
               <input
                 type="text"
                 name="details"
                 defaultValue={details}
-                className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                className="bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-gray-900"
                 placeholder="Enter product details"
               />
             </div>
           </div>
           <div className="mb-6">
-            <label className="block mb-2 text-lg font-semibold text-gray-900 ">
+            <label className="block mb-2 text-lg font-semibold ">
               Image
             </label>
             <input
               type="url"
               name="image"
               defaultValue={image}
-              className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              className="bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-gray-900"
               placeholder="Enter product image url"
               required
             />

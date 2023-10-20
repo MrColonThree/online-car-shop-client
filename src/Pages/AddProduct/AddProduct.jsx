@@ -39,13 +39,11 @@ const AddProduct = () => {
   return (
     <div className="max-w-screen-xl mx-auto px-5 md:px-10 py-5 md:py-16">
       <div
-        className={`px-10 py-10 md:px-20 md:py-10 filter backdrop-blur-xl ${
-          dark ? "text-red-400 bg-yellow-300" : "bg-red-200"
-        }`}
+        className={`px-10 py-10 md:px-20 md:py-10 filter backdrop-blur-xl border-2 rounded`}
       >
         <h2
           style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)" }}
-          className="text-3xl text-center font-bold mb-5"
+          className="text-3xl text-center font-bold mb-5 uppercase"
         >
           Add a Product
         </h2>
