@@ -1,5 +1,5 @@
-import { BsCaretLeftFill, BsCartPlus } from "react-icons/bs";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { BsCartPlus } from "react-icons/bs";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
@@ -8,7 +8,6 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const ProductDetails = () => {
   const product = useLoaderData();
-  const navigate = useNavigate();
   const { dark, user } = useContext(AuthContext);
   const { name, brand, image, type, rating, price, details } = product;
   useEffect(() => {
