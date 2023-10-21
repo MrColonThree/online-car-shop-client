@@ -89,10 +89,10 @@ const MyCart = () => {
           My Cart
         </button>
       </div>
-      {cartProducts.length === 0 && (
+      {filteredProducts.length === 0 && (
         <div className="text-center text-3xl my-40">Cart Is empty!</div>
       )}
-      {cartProducts.length > 0 && (
+      {filteredProducts.length > 0 && (
         <div className="">
           <table className="w-full text-sm text-left ">
             <thead
