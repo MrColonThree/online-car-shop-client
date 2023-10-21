@@ -37,7 +37,7 @@ const Header = () => {
           bannerData.map((banner) => (
             <SwiperSlide key={banner._id}>
               <img
-                className="w-full mx-auto lg:h-[750px] relative"
+                className="w-full mx-auto lg:h-[750px] md:h-[500px] h-[400px] relative"
                 src={banner.image}
                 alt=""
               />

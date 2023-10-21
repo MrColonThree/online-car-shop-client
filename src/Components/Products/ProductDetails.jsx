@@ -48,9 +48,6 @@ const ProductDetails = () => {
         }
       });
   };
-  const handleGoBack = () => {
-    navigate(-1);
-  };
   return (
     <div className="max-w-screen-xl mx-auto flex items-center justify-center min-h-[70vh] my-10 lg:my-20 px-5">
       <div
@@ -59,12 +56,12 @@ const ProductDetails = () => {
         }`}
       >
         <img
-          className="w-full lg:w-4/6 h-[350px] md:h-[500px] lg:h-[500px]"
+          className="w-full lg:w-4/6 h-56 md:h-[500px] lg:h-[500px]"
           src={image}
           alt=""
         />
         <div className="px-5 pt-5 lg:pt-0 lg:w-1/2 relative pb-10 lg:pb-auto">
-          <h1 className="text-4xl font-bold mb-3 uppercase">
+          <h1 className="text-2xl md:text-4xl font-bold mb-3 uppercase">
             {name} <span className="font-semibold">({brand})</span>
           </h1>
           <p className="text-lg">{type}</p>
@@ -82,12 +79,6 @@ const ProductDetails = () => {
           </p>
           <hr className="m-2 border" />
           <p className="">{details}</p>
-          <button
-            onClick={handleGoBack}
-            className="text-lg font-semibold text-white bg-red-500 px-2 py-1 mt-3 rounded bottom-0 left-5 absolute flex items-center"
-          >
-            <BsCaretLeftFill className="text-xl"></BsCaretLeftFill>Go Back
-          </button>
           <button
             onClick={handleAddToCart}
             className="text-lg font-semibold text-white bg-green-600 px-2 py-1 mt-3 rounded bottom-0 right-0 absolute flex items-center gap-2"

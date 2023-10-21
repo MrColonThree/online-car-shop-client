@@ -249,7 +249,7 @@ const SignUp = () => {
         </button>
         <div className="flex text-center items-center justify-center gap-2 my-5">
           <hr className="w-full border" />
-          <h2 className="text-center w-80">SignUp with</h2>
+          <h2 className="text-center w-96">SignUp with</h2>
           <hr className="w-full border" />
         </div>
 

@@ -9,7 +9,7 @@ const MainLayout = () => {
   return (
     <div className={`relative exo ${dark ? "black-mode" : ""}`}>
       <CustomizeNavbar></CustomizeNavbar>
-      <div className="min-h-[65vh]">
+      <div className="min-h-[90vh]">
         <Outlet></Outlet>
       </div>
       <Footer />

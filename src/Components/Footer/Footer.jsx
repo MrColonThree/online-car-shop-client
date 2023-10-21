@@ -21,7 +21,7 @@ const Footer = () => {
             <BsArrowUpSquare />
           </button>
         </div>
-        <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
+        <ul className="flex flex-wrap justify-center gap-5 items-center gap-y-2 gap-x-8">
           <li>About Us</li>
           <li>License</li>
           <li>Contribute</li>

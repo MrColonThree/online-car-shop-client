@@ -50,9 +50,12 @@ const MyCart = () => {
       confirmButtonText: "Yes, Remove Product from Cart!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/cart/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/cart/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -98,56 +101,69 @@ const MyCart = () => {
               }`}
             >
               <tr>
-                <th scope="col" className="px-6 py-3">
+                <th
+                  scope="col"
+                  className="p-2 md:px-4 md:py-2 lg:px-6 lg:py-3 "
+                >
                   Serial
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2 md:px-4 md:py-2 lg:px-6 lg:py-3">
                   Name
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th
+                  scope="col"
+                  className="hidden md:flex p-2 md:px-4 md:py-2 lg:px-6 lg:py-3"
+                >
                   Brand
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2 md:px-4 md:py-2 lg:px-6 lg:py-3">
                   Price
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="p-2 md:px-4 md:py-2 lg:px-6 lg:py-3">
                   Action
                 </th>
               </tr>
             </thead>
             <tbody>
-              {filteredProducts && filteredProducts.map((product, idx) => (
-                <tr
-                  key={idx}
-                  className={`border-x-2 text-center ${
-                    dark ? "border-white" : "border-black"
-                  } ${
-                    idx + 1 === filteredProducts.length
-                      ? "border-b-2"
-                      : "border-b"
-                  }`}
-                >
-                  <td className="px-6 py-4">{idx + 1}</td>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-semibold whitespace-nowrap"
+              {filteredProducts &&
+                filteredProducts.map((product, idx) => (
+                  <tr
+                    key={idx}
+                    className={`border-x-2 text-center ${
+                      dark ? "border-white" : "border-black"
+                    } ${
+                      idx + 1 === filteredProducts.length
+                        ? "border-b-2"
+                        : "border-b"
+                    }`}
                   >
-                    {product.product.name}
-                  </th>
-                  <td className="px-6 py-4">{product.product.brand}</td>
-                  <td className="px-6 py-4">${product.product.price}</td>
-                  <td className="px-6 py-4 flex items-center justify-center gap-2">
-                    <button
-                      onClick={() => handleDeleteProduct(product._id)}
-                      className="text-red-600 text-2xl hover:underline"
-                      data-tooltip-id="my-tooltip"
-                      data-tooltip-content="Remove product"
+                    <td className="p-2 md:px-4 md:py-2 lg:px-6 lg:py-3">
+                      {idx + 1}
+                    </td>
+                    <th
+                      scope="row"
+                      className="p-2 md:px-4 md:py-2 lg:px-6 lg:py-3 font-semibold whitespace-nowrap"
                     >
-                      <MdDeleteForever></MdDeleteForever>
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                      {product.product.name}
+                    </th>
+                    <td className="hidden md:flex p-2 md:px-4 md:py-2 lg:px-6 lg:py-3">
+                      {product.product.brand}
+                    </td>
+                    <td className="p-2 md:px-4 md:py-2 lg:px-6 lg:py-3">
+                      ${product.product.price}
+                    </td>
+                    <td className="p-2 md:px-4 md:py-2 lg:px-6 lg:py-3 flex items-center justify-center gap-2">
+                      <button
+                        onClick={() => handleDeleteProduct(product._id)}
+                        className="text-red-600 text-2xl hover:underline"
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content="Remove product"
+                      >
+                        <MdDeleteForever></MdDeleteForever>
+                      </button>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
           <div className="my-10 text-right mr-5 font-semibold">

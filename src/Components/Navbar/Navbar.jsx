@@ -120,7 +120,7 @@ function ProfileMenu() {
 
 const CustomizeNavbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const { user, dark,toggleTheme } = useContext(AuthContext);
+  const { user, dark, toggleTheme } = useContext(AuthContext);
 
   useEffect(() => {
     window.addEventListener(
@@ -217,7 +217,7 @@ const CustomizeNavbar = () => {
         </IconButton>
         <NavLink
           to="/"
-          className="mr-4 ml-2 my-2  text-2xl font-bold cursor-pointer text-white flex gap-2 items-center uppercase"
+          className="mr-4 ml-2 my-2  text-2xl font-bold cursor-pointer text-white flex gap-2 items-center uppercase text-center"
         >
           <img className="h-8" src="/logo.png" alt="" />
           Automotive Oasis
@@ -233,8 +233,8 @@ const CustomizeNavbar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? " block py-1 md:py-2 pl-3 pr-4 md:bg-transparent  md:p-0 text-gray-400 font-bold mr-5"
-                  : " block py-1 md:py-2 pl-3 pr-4 md:bg-transparent text-white hover:text-gray-400 md:p-0 font-bold mr-5"
+                  ? " block py-1 md:py-2 pl-3 pr-4 md:bg-transparent  md:p-0 text-gray-400 font-bold mr-0 md:mr-5"
+                  : " block py-1 md:py-2 pl-3 pr-4 md:bg-transparent text-white hover:text-gray-400 md:p-0 font-bold mr-0 md:mr-5"
               }
               aria-current="page"
               variant="small"

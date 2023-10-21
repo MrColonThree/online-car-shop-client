@@ -66,7 +66,7 @@ const Login = () => {
     <div className="flex justify-center items-center  min-h-[85vh] bg-login bg-cover bg-center">
       <form
         onSubmit={handleLogIn}
-        className={`w-3/4 md:w-4/6 lg:max-w-lg mx-20 rounded-2xl py-12 px-10 md:px-20 shadow-xl ${
+        className={`my-20 w-3/4 md:w-4/6 lg:max-w-lg mx-20 rounded-2xl py-12 px-10 md:px-20 shadow-xl ${
           dark ? "bg-black/70" : "bg-white/70"
         } font-semibold`}
       >
@@ -167,7 +167,7 @@ const Login = () => {
               dark ? "border-white" : "border-black"
             }`}
           />
-          <h2 className="text-center w-64 md:w-52">Login with</h2>
+          <h2 className="text-center w-72">Login with</h2>
           <hr
             className={`w-full border ${
               dark ? "border-white" : "border-black"
