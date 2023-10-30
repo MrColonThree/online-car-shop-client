@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { BallTriangle } from "react-loader-spinner";
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
@@ -69,6 +70,22 @@ const AuthProvider = ({ children }) => {
       observer();
     };
   });
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[100vh]">
+        <BallTriangle
+          height={100}
+          width={100}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          wrapperClass={{}}
+          wrapperStyle=""
+          visible={true}
+        />
+      </div>
+    );
+  }
   const authInfo = {
     createUser,
     brands,

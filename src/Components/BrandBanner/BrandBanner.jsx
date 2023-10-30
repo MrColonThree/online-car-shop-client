@@ -13,10 +13,8 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useLoaderData } from "react-router-dom";
 const BrandBanner = () => {
-  
   const brand = useLoaderData();
   const banner = brand.brand_banner || "";
-  
   return (
     <div className="max-w-screen-2xl mx-auto">
       <Swiper

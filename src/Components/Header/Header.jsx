@@ -12,11 +12,9 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Spinner } from "@material-tailwind/react";
 const Header = () => {
-  const { dark, setLoading, loading } = useContext(AuthContext);
+  const { dark, setLoading } = useContext(AuthContext);
   const [bannerData, setBannerData] = useState([]);
-  setLoading(true);
   useEffect(() => {
     fetch(
       "https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/banners"
@@ -27,13 +25,6 @@ const Header = () => {
         setLoading(false);
       });
   }, [setLoading]);
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-[100vh]">
-        <Spinner color="blue" className="h-12 w-12" />
-      </div>
-    );
-  }
   return (
     <div className="">
       <Swiper

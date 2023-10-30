@@ -1,16 +1,22 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import { AuthContext } from "../../Providers/AuthProvider";
 const Products = () => {
+  const { setLoading } = useContext(AuthContext);
   const loadedBrand = useLoaderData();
-  console.log(loadedBrand);
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/products")
+    fetch(
+      "https://online-car-shop-server-8px3eqa97-abdullah-al-monirs-projects.vercel.app/products"
+    )
       .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      });
+  }, [setLoading]);
   const currentProducts = products.filter(
     (product) =>
       product.brand.toLowerCase() === loadedBrand.brand_name.toLowerCase()
@@ -36,9 +42,10 @@ const Products = () => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {currentProducts && currentProducts.map((product) => (
-            <ProductCard key={product._id} product={product}></ProductCard>
-          ))}
+          {currentProducts &&
+            currentProducts.map((product) => (
+              <ProductCard key={product._id} product={product}></ProductCard>
+            ))}
         </div>
       )}
     </div>
