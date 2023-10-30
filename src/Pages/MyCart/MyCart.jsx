@@ -112,7 +112,7 @@ const MyCart = () => {
                 </th>
                 <th
                   scope="col"
-                  className="hidden md:flex p-2 md:px-4 md:py-2 lg:px-6 lg:py-3"
+                  className="hidden md:block  p-2 md:px-4 md:py-2 lg:px-6 lg:py-3"
                 >
                   Brand
                 </th>
@@ -146,7 +146,7 @@ const MyCart = () => {
                     >
                       {product.product.name}
                     </th>
-                    <td className="hidden md:flex p-2 md:px-4 md:py-2 lg:px-6 lg:py-3">
+                    <td className="hidden md:block  p-2 md:px-4 md:py-2 lg:px-6 lg:py-3">
                       {product.product.brand}
                     </td>
                     <td className="p-2 md:px-4 md:py-2 lg:px-6 lg:py-3">
