@@ -1,3 +1,5 @@
+# Technologies
+ReactJs, TailwindCSS, Firebase, MongoDB, ExpressJs, NodeJs.
 # Features
 
 Automotive Oasis is a website of a car showroom of various brands.Here 4 pages in the navbar. Where the Add Product and Cart are Private Route. Visitor can't get access those pages without login or signup.After visiting login page, if visitor doesn't have any account then he/she can redirect to signup page by clicking signup text in login page. Then After the visitor login or signup, the login page will be hidden from navbar and the users name, and profile pictures on the navbar.Users email also can be seen after toggle his/her profile picture. He/she also see a signout option after toggling his/her profile picture in the navbar.By clicking signOut user can sign out from his/her account and redirected to homepage.
